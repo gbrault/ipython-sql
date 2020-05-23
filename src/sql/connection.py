@@ -115,6 +115,8 @@ class Connection(object):
                 "Could not close connection because it was not found amongst these: %s"
                 % str(cls.connections.keys())
             )
+        if descriptor in cls.connections:
+            del cls.connections[descriptor]
         if conn.name in cls.connections:
             del cls.connections[conn.name]
         if str(conn.metadata.bind.url) in cls.connections:
