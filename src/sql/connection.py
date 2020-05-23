@@ -124,4 +124,5 @@ class Connection(object):
         conn.session.close()
 
     def close(self):
-        self.__class__._close(self)
+        for descriptor in self.connections.keys():
+           self.__class__._close(self, descriptor)
